@@ -4,9 +4,9 @@ interface TokenDisplayDataBoxContentLoaderProps {
   isSmallSize?: boolean;
 }
 
-export const TokenDisplayDataBoxContentLoader: React.FC<TokenDisplayDataBoxContentLoaderProps> = ({
-  isSmallSize,
-}) => {
+export const TokenDisplayDataBoxContentLoader: React.FC<
+  TokenDisplayDataBoxContentLoaderProps
+> = ({ isSmallSize }) => {
   return (
     <ContentLoader
       height={isSmallSize ? 22 : 26}

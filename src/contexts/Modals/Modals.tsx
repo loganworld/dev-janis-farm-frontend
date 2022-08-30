@@ -20,14 +20,16 @@ interface ModalInfo {
   backdropClick?: boolean;
 }
 
-const modalSetter = (info: ModalInfo) => (state: ModalInfo[]): ModalInfo[] => {
-  const existed = info.id && state.some((x) => x.id === info.id);
-  if (!existed) {
-    return [...state, info];
-  }
+const modalSetter =
+  (info: ModalInfo) =>
+  (state: ModalInfo[]): ModalInfo[] => {
+    const existed = info.id && state.some((x) => x.id === info.id);
+    if (!existed) {
+      return [...state, info];
+    }
 
-  return state.map((item) => (item.id !== info.id ? item : info));
-};
+    return state.map((item) => (item.id !== info.id ? item : info));
+  };
 
 const Modals: React.FC = ({ children }) => {
   const [modals, setModals] = useState<ModalInfo[]>([]);

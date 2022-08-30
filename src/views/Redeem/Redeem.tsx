@@ -50,9 +50,10 @@ const Redeem: React.FC = () => {
   const history = useHistory();
   const query = useQuery();
 
-  const isFullCollateralized = useMemo(() => info?.effectiveCollateralRatio.gte(10 ** 6), [
-    info?.effectiveCollateralRatio,
-  ]);
+  const isFullCollateralized = useMemo(
+    () => info?.effectiveCollateralRatio.gte(10 ** 6),
+    [info?.effectiveCollateralRatio],
+  );
 
   const isExceededBalance = useMemo(() => {
     if (dollarBalance && dollarAmount) {
