@@ -72,7 +72,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         )}
         {!!shareAmount && shareAmount.gt(0) && (
           <TxModalDataRow>
-            <TxModalDataRowField>TITAN Deposited</TxModalDataRowField>
+            <TxModalDataRowField>LITH Deposited</TxModalDataRowField>
             <TxModalDataRowValue>
               <Number value={shareAmount} decimals={18} precision={6} />
             </TxModalDataRowValue>
@@ -90,7 +90,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
           <TxModalDataRow>
             <TxModalDataRowField></TxModalDataRowField>
             <TxModalDataRowValue>
-              1 TITAN = $
+              1 LITH = $
               <Number value={sharePrice} decimals={6} precision={6} />
             </TxModalDataRowValue>
           </TxModalDataRow>

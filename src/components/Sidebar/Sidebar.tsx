@@ -35,12 +35,12 @@ const NavContainer: React.FC<NavContainerProps> = ({ onClickItem }) => {
           Home
         </StyledNavLink>
       </StyledNavItem>
-      <StyledNavItem onClick={handleClick}>
+      {/* <StyledNavItem onClick={handleClick}>
         <StyledNavLink to="/bank" activeClassName="active">
           <img src={iconBank} />
           Bank
         </StyledNavLink>
-      </StyledNavItem>
+      </StyledNavItem> */}
       <StyledNavItem onClick={handleClick}>
         <StyledNavLink to="/farms">
           <img src={iconPools} />
@@ -48,7 +48,7 @@ const NavContainer: React.FC<NavContainerProps> = ({ onClickItem }) => {
         </StyledNavLink>
       </StyledNavItem>
 
-      <StyledNavItem onClick={handleClick}>
+      {/* <StyledNavItem onClick={handleClick}>
         <StyledLinkHref
           href="https://dragonball.iron.finance"
           target="_blank"
@@ -58,8 +58,8 @@ const NavContainer: React.FC<NavContainerProps> = ({ onClickItem }) => {
           DragonBall&nbsp;
           <i className="fas fa-external-link"></i>
         </StyledLinkHref>
-      </StyledNavItem>
-      <StyledNavItem onClick={handleClick}>
+      </StyledNavItem> */}
+      {/* <StyledNavItem onClick={handleClick}>
         <StyledLinkHref
           href="https://gov.polygon.iron.finance"
           target="_blank"
@@ -80,7 +80,7 @@ const NavContainer: React.FC<NavContainerProps> = ({ onClickItem }) => {
           Documentations
           <i className="fas fa-external-link"></i>
         </StyledLinkHref>
-      </StyledNavItem>
+      </StyledNavItem> */}
     </StyledNavContainer>
   );
 };

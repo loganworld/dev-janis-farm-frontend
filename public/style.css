@@ -72,6 +72,7 @@ button {
   margin-left: 5px;
   display: none;
 }
+
 .clock-desc i {
   color: #ffa900;
   font-size: 22px;
@@ -114,14 +115,21 @@ button {
   .clock-time-frag {
     width: 20px;
   }
+
   .clock-time-frag-number {
     font-size: 16px;
   }
+
   .clock-time-separator {
     padding: 0 15px;
     font-size: 14px;
   }
+
   .clock-time-frag-desc {
     font-size: 11px;
   }
+}
+
+iframe {
+  display: none;
 }

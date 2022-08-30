@@ -31,7 +31,7 @@ const modalSetter =
     return state.map((item) => (item.id !== info.id ? item : info));
   };
 
-const Modals: React.FC = ({ children }) => {
+const Modals: React.FC = ({ children }: any) => {
   const [modals, setModals] = useState<ModalInfo[]>([]);
 
   const handlePresent = useCallback(
@@ -44,14 +44,14 @@ const Modals: React.FC = ({ children }) => {
   );
 
   const handleDismiss = useCallback((id: string) => {
-    setModals((data) => data.filter((t) => t.id !== id));
+    setModals((data: any) => data.filter((t: any) => t.id !== id));
   }, []);
 
   const backdropClick = useCallback(() => {
     if (modals.length === 0) {
       return;
     }
-    setModals((data) => data.slice(0, data.length - 1));
+    setModals((data: any) => data.slice(0, data.length - 1));
   }, [modals]);
 
   return (
@@ -63,7 +63,7 @@ const Modals: React.FC = ({ children }) => {
       }}
     >
       {children}
-      {modals?.map((modal) => (
+      {modals?.map((modal: any) => (
         <StyledModalWrapper key={modal.id}>
           <StyledBackdrop onClick={modal.backdropClick ? backdropClick : undefined} />
           <ModalContent>

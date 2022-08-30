@@ -7,12 +7,19 @@ import TokenSliderInput from './TokenSliderInput';
 
 interface StakeLPComponentProps {
   poolConfig: PoolConfig;
+  index: any;
+  setDeposit: any;
+  balance: any | null;
 }
 
-const StakeLPComponent: React.FC<StakeLPComponentProps> = ({ poolConfig }) => {
+const StakeLPComponent: React.FC<StakeLPComponentProps> = ({
+  poolConfig,
+  setDeposit,
+  index,
+  balance,
+}) => {
   const { token0, token1 } = poolConfig;
   const [amount, setAmount] = useState(BigNumber.from(0));
-  const balance = BigNumber.from(0);
   const refInput = useRef(null);
 
   return (
@@ -34,10 +41,11 @@ const StakeLPComponent: React.FC<StakeLPComponentProps> = ({ poolConfig }) => {
         onChange={setAmount}
         token0={token0}
         token1={token1}
+        maxBalance={balance}
         hideMax
       />
       <StyledFooter>
-        <Button>Deposit</Button>
+        <Button onClick={() => setDeposit(index)}>Deposit</Button>
       </StyledFooter>
     </StyledContainer>
   );

@@ -8,9 +8,10 @@ import Spacer from 'src/components/Spacer';
 
 interface UnstakeLPComponentProps {
   poolConfig: PoolConfig;
+  balance: any | null;
 }
 
-const UnstakeLPComponent: React.FC<UnstakeLPComponentProps> = ({ poolConfig }) => {
+const UnstakeLPComponent: React.FC<UnstakeLPComponentProps> = ({ poolConfig, balance }) => {
   const { token0, token1 } = poolConfig;
   const [amount, setAmount] = useState(BigNumber.from(0));
   const refInput = useRef(null);
@@ -20,7 +21,7 @@ const UnstakeLPComponent: React.FC<UnstakeLPComponentProps> = ({ poolConfig }) =
       <Balance>
         Deposited:&nbsp;
         <span className="balance-click">
-          <Number value={BigNumber.from(0)} decimals={18} precision={6} />
+          <Number value={balance} decimals={18} precision={6} />
         </span>
         &nbsp; {token0}
         {token1 ? '/' + token1 : ''}
@@ -34,6 +35,7 @@ const UnstakeLPComponent: React.FC<UnstakeLPComponentProps> = ({ poolConfig }) =
         onChange={setAmount}
         token0={token0}
         token1={token1}
+        maxBalance={balance}
         hideMax
       />
       <StyledFooter>

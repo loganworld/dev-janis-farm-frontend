@@ -16,7 +16,7 @@ const config: Configuration = {
   pollingInterval: 10 * 1000,
   defaultSlippageTolerance: 0.001,
   gasLimitMultiplier: 1.5,
-  backendUrl: 'https://api.iron.finance',
+  backendUrl: null,
   backendDisabled: false,
   enabledChart: true,
   excludedAddress: [],

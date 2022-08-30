@@ -93,7 +93,7 @@ const RedeemFooter: React.FC<RedeemFooterProps> = ({
           <CardFooterRow>
             <CardFooterRowLeft></CardFooterRowLeft>
             <CardFooterRowRight>
-              <div className="value">1</div> <CardUnit>TITAN</CardUnit>
+              <div className="value">1</div> <CardUnit>LITH</CardUnit>
               &nbsp;=&nbsp;
               <div className="value">
                 <Number value={info?.sharePrice} decimals={6} precision={6} />

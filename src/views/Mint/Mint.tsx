@@ -179,7 +179,7 @@ const Mint: React.FC = () => {
             <FormRow>
               <div className="row-header">
                 <h6>
-                  TITAN &middot;{' '}
+                  LITH &middot;{' '}
                   <Number
                     percentage={true}
                     value={BigNumber.from(1e6).sub(info.targetCollateralRatio)}
@@ -198,14 +198,14 @@ const Mint: React.FC = () => {
               <div className="row-input">
                 <TokenInput
                   ref={refInputShare}
-                  token={'TITAN'}
+                  token={'LITH'}
                   decimals={18}
                   precision={6}
                   onChange={updateShareAmount}
                 />
                 <FormToken>
-                  <TokenSymbol size={32} symbol={'TITAN'}></TokenSymbol>
-                  <span>{'TITAN'}</span>
+                  <TokenSymbol size={32} symbol={'LITH'}></TokenSymbol>
+                  <span>{'LITH'}</span>
                 </FormToken>
               </div>
             </FormRow>

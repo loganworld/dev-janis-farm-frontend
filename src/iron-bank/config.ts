@@ -28,6 +28,7 @@ export type PoolConfig = {
   market?: Market;
   marketSymbol?: MarketSymbol;
   farmUrl?: string;
+  wantToken?: string;
 };
 
 export type Vault = {

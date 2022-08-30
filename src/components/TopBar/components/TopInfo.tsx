@@ -89,7 +89,7 @@ const TopInfo: React.FC = () => {
             )}
           </StyledInfoItem>
           <StyledInfoItem>
-            <StyledInfoLabel>1 TITAN =</StyledInfoLabel>
+            <StyledInfoLabel>1 LITH =</StyledInfoLabel>
             <StyledInfoValue>
               {info ? <Number value={info?.sharePrice} decimals={6} precision={6} /> : '--'}
             </StyledInfoValue>{' '}
