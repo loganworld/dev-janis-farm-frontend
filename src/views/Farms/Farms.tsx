@@ -41,7 +41,7 @@ const Farms: React.FC = () => {
   ];
   const allFarmRewards = [
     { value: 'all', label: 'All' },
-    { value: 'titan', label: 'TITAN' },
+    { value: 'lith', label: 'LITH' },
     { value: 'usdc', label: 'USDC' },
   ];
 
@@ -279,23 +279,25 @@ const Farms: React.FC = () => {
             </StyledFarmGridHeaderCell>
           </StyledFarmGridHeader>
           <StyledFarmGridBody>
-            {(allPools || []).map((p, index) => (
-              <FarmItem
-                key={index}
-                index={index}
-                visible={isVisible(p)}
-                data={
-                  p.farmUrl
-                    ? getPartnerPoolData(p.partnerPoolAddress)
-                    : getPoolData(p.id, p.masterChef)
-                }
-                expanded={expanded === index}
-                toggle={toggle}
-                poolConfig={getPoolConfig(p, p.masterChef)}
-                onlyDeposit={showOnlyDeposit}
-                updatePoolDeposit={updatePoolDeposit}
-              />
-            ))}
+            {(allPools || []).map((p, index) => {
+              return (
+                <FarmItem
+                  key={index}
+                  index={index}
+                  visible={isVisible(p)}
+                  data={
+                    p.farmUrl
+                      ? getPartnerPoolData(p.partnerPoolAddress)
+                      : getPoolData(p.id, p.masterChef)
+                  }
+                  expanded={expanded === index}
+                  toggle={toggle}
+                  poolConfig={getPoolConfig(p, p.masterChef)}
+                  onlyDeposit={showOnlyDeposit}
+                  updatePoolDeposit={updatePoolDeposit}
+                />
+              );
+            })}
           </StyledFarmGridBody>
         </StyledFarmGrid>
         <Spacer size="lg" />

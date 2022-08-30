@@ -8,8 +8,8 @@ const BuyShareButton: React.FC = () => {
 
   return (
     <StyledButton href={config.buyShareHref} target="_blank">
-      <TokenSymbol symbol="TITAN" size={24} />
-      &nbsp;Buy<span>&nbsp;TITAN</span>
+      <TokenSymbol symbol="LITH" size={24} />
+      &nbsp;Buy<span>&nbsp;LITH</span>
     </StyledButton>
   );
 };

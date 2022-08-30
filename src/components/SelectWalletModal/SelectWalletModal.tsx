@@ -15,116 +15,65 @@ import MathWalletLogo from '../../assets/img/MathWallet.svg';
 import safeWalletLogo from '../../assets/img/SafeWallet.svg';
 import TokenPocketLogo from '../../assets/img/TokenPocker.svg';
 import WalletConnectLogo from '../../assets/img/wallet_connect.png';
-import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core';
-import { useAddPopup, useSetConnectedAccount } from 'src/state/application/hooks';
-import useWalletConnectors from '../../hooks/useWalletConnectors';
-import { ConnectorNames } from 'src/state/application/reducer';
-import { InjectedConnector } from '@web3-react/injected-connector';
-import { useConfiguration } from 'src/contexts/ConfigProvider/ConfigProvider';
+import { useWallet } from 'use-wallet';
 
 export interface SelectWalletModalProps {
   onDismiss?: () => void;
 }
 
 interface Wallet {
-  connector: ConnectorNames;
+  type: string;
   name: string;
   image: string;
 }
 const wallets = [
   {
-    connector: ConnectorNames.Injected,
+    type: 'injected',
     name: 'MetaMask',
     image: MetamaskLogo,
   },
   {
-    connector: ConnectorNames.WalletConnect,
+    type: 'walletConnect',
     name: 'Wallet Connect',
     image: WalletConnectLogo,
   },
   {
-    connector: ConnectorNames.Injected,
+    type: 'injected',
     name: 'TrustWallet',
     image: TrustWalletLogo,
   },
-  {
-    connector: ConnectorNames.Injected,
-    name: 'MathWallet',
-    image: MathWalletLogo,
-  },
-  {
-    connector: ConnectorNames.Injected,
-    name: 'TokenPocket',
-    image: TokenPocketLogo,
-  },
-  {
-    connector: ConnectorNames.Injected,
-    name: 'SafePal Wallet',
-    image: safeWalletLogo,
-  },
+  // {
+  //     type: "",
+  //     name: 'MathWallet',
+  //     image: MathWalletLogo,
+  // },
+  // {
+  //     type: "",
+  //     name: 'TokenPocket',
+  //     image: TokenPocketLogo,
+  // },
+  // {
+  //     type: "",
+  //     name: 'SafePal Wallet',
+  //     image: safeWalletLogo,
+  // },
 ] as Wallet[];
 
 const SelectWalletModal: React.FC<SelectWalletModalProps> = ({ onDismiss }) => {
-  const { activate, connector, account } = useWeb3React();
-  const connectors = useWalletConnectors();
-  const saveAccount = useSetConnectedAccount();
-  const addPopup = useAddPopup();
-  const { defaultProvider, etherscanUrl, chainId } = useConfiguration();
-
-  const onConnectPress = useCallback(
-    (connectionId: ConnectorNames) => {
-      activate(connectors[connectionId], (error) => {
-        if (
-          error instanceof UnsupportedChainIdError &&
-          connectors[connectionId] instanceof InjectedConnector
-        ) {
-          addPopup({
-            error: {
-              title: 'Connect wallet error',
-              message: 'Please connect to Polygon chain',
-            },
-          });
-          window.ethereum.request({
-            method: 'wallet_addEthereumChain',
-            params: [
-              {
-                chainId: '0x' + chainId.toString(16), // A 0x-prefixed hexadecimal string
-                chainName: 'Polygon',
-                nativeCurrency: {
-                  name: 'MATIC',
-                  symbol: 'MATIC',
-                  decimals: 18,
-                },
-                rpcUrls: Array.isArray(defaultProvider) ? defaultProvider : [defaultProvider],
-                blockExplorerUrls: [etherscanUrl],
-              },
-            ],
-          });
-        } else {
-          addPopup({
-            error: {
-              title: 'Connect wallet error',
-              message: error?.message,
-            },
-          });
-        }
-        return;
-      });
-      saveAccount(account, connectionId);
-      onDismiss();
-    },
-    [
-      account,
-      activate,
-      addPopup,
-      chainId,
-      connectors,
-      defaultProvider,
-      etherscanUrl,
-      onDismiss,
-      saveAccount,
-    ],
-  );
+  const wallet = useWallet();
+  const connectWallet = async (type: string) => {
+    switch (type) {
+      case 'injected':
+        wallet.connect();
+        break;
+      case 'walletConnect':
+        wallet.connect('walletconnect');
+        break;
+      default:
+        break;
+    }
+    onDismiss();
+  };
   return (
     <Modal size="xs" padding="0">
       <ModalUpper>
@@ -142,9 +91,7 @@ const SelectWalletModal: React.FC<SelectWalletModalProps> = ({ onDismiss }) => {
             <Item
               key={wallet.name}
               onClick={() => {
-                if (connector !== connectors[wallet.connector]) {
-                  onConnectPress(wallet.connector);
-                }
+                connectWallet(wallet.type);
               }}
             >
               <WalletName>{wallet.name}</WalletName>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import useModal from '../../../hooks/useModal';
-import iconPolygon from '../../../assets/img/polygon-chain.png';
+import iconFantom from '../../../assets/img/fantom-chain.png';
 import SelectChainModal from './SelectChainModal';
 
 const SelectChainButton: React.FC = () => {
@@ -9,8 +9,8 @@ const SelectChainButton: React.FC = () => {
 
   return (
     <StyledButton onClick={onPresentChainModal}>
-      <img src={iconPolygon} />
-      <span>Polygon</span>
+      <img src={iconFantom} />
+      <span>Fantom testnet</span>
     </StyledButton>
   );
 };

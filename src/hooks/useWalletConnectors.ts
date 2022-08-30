@@ -23,7 +23,6 @@ const useWalletConnectors = () => {
       rpc: { [chainId]: networkUrl },
       bridge: 'https://bridge.walletconnect.org',
       qrcode: true,
-      pollingInterval: POLLING_INTERVAL,
     });
 
     return {

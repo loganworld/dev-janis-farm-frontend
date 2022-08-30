@@ -88,7 +88,7 @@ const CollateralInfo: React.FC = () => {
                 </StyledChartInfoItem>
                 <StyledChartInfoItem color="rgb(240, 101, 10)">
                   <div className="dot" />
-                  <StyledTitle>TITAN</StyledTitle>
+                  <StyledTitle>LITH</StyledTitle>
                   <StyledValue>{collateralRatio[2]?.ratio || '--'}%</StyledValue>
                 </StyledChartInfoItem>
               </StyledChartInfo>
