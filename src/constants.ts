@@ -20,6 +20,6 @@ export const HelpTexts = {
 };
 
 export const TokenIcons: { [key: string]: string } = {
-  LITH: 'https://ironfi.s3.amazonaws.com/images/TITAN.png',
+  TITAN: 'https://ironfi.s3.amazonaws.com/images/TITAN.png',
   IRON: 'https://ironfi.s3.amazonaws.com/images/IRON.png',
 };

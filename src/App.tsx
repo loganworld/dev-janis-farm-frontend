@@ -13,8 +13,6 @@ import MainWrapper from './MainWrapper';
 import Sidebar from './components/Sidebar';
 import loadable from '@loadable/component';
 import bgSite from './assets/img/bg-site.png';
-import { UseWalletProvider } from 'use-wallet';
-import BlockchainProvider from './contexts/blockchainProvider';
 const Dashboard = loadable(() => import('./views/Dashboard'));
 const Bank = loadable(() => import('./views/Bank'));
 const Farms = loadable(() => import('./views/Farms'));
@@ -30,7 +28,7 @@ const App: React.FC = () => {
           <MainWrapper>
             <Switch>
               <Route path="/" exact>
-                <Farms />
+                <Dashboard />
               </Route>
               <Route path="/mint">
                 <Redirect to="/bank?action=mint" />
@@ -60,34 +58,19 @@ const App: React.FC = () => {
 const Providers: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <UseWalletProvider
-        connectors={{
-          walletconnect: {
-            rpc: {
-              1: 'https://main-light.eth.linkpool.io/',
-              3: 'https://rpc-url',
-              4002: 'https://ftm-test.babylonswap.finance',
-            },
-          },
-          portis: { dAppId: 'my-dapp-123-xyz' },
-        }}
-      >
-        {/* <ConnectionProvider> */}
-        <BlockchainProvider>
-          <DynamicWalletProvider>
-            <Provider store={store}>
-              <Updaters />
-              <ModalsProvider>
-                <>
-                  <Popups />
-                  {children}
-                  <Disclaimer />
-                </>
-              </ModalsProvider>
-            </Provider>
-          </DynamicWalletProvider>
-        </BlockchainProvider>
-      </UseWalletProvider>
+      {/* <ConnectionProvider> */}
+      <DynamicWalletProvider>
+        <Provider store={store}>
+          <Updaters />
+          <ModalsProvider>
+            <>
+              <Popups />
+              {children}
+              <Disclaimer />
+            </>
+          </ModalsProvider>
+        </Provider>
+      </DynamicWalletProvider>
       {/* </ConnectionProvider> */}
     </ThemeProvider>
   );

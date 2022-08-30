@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import imgFantomChain from '../../../assets/img/fantom-chain.png';
+import imgPolygonChain from '../../../assets/img/polygon-chain.png';
 import imgBinanceChain from '../../../assets/img/binance-chain.svg';
 import CloseButton from '../../CloseButton';
 
@@ -22,14 +22,14 @@ const SelectChainModal: React.FC<ModalProps> = ({ onDismiss }) => {
       <StyledChainContainer>
         <StyledChainItem select onClick={onDismiss}>
           <i className="fas fa-check-circle" />
-          <img src={imgFantomChain} />
-          Fantom testnet
+          <img src={imgPolygonChain} />
+          Polygon
         </StyledChainItem>
-        {/* <StyledChainItem href="https://app.iron.finance/" rel="noopener noreferrer">
-                    <i className="fas fa-check-circle" />
-                    <img src={imgBinanceChain} />
-                    Binance
-                </StyledChainItem> */}
+        <StyledChainItem href="https://app.iron.finance/" rel="noopener noreferrer">
+          <i className="fas fa-check-circle" />
+          <img src={imgBinanceChain} />
+          Binance
+        </StyledChainItem>
       </StyledChainContainer>
     </Modal>
   );

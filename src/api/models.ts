@@ -14,7 +14,7 @@ export const getStasticTypeDisplayName = (type: StatisticType) => {
 
 export const TokenSymbols = {
   dollar: 'IRON',
-  share: 'LITH',
+  share: 'TITAN',
 };
 
 export type MerketProof = {
@@ -40,9 +40,9 @@ export const MeasurementDisplay: Record<Measurement, string> = {
   polygon_iron_price: 'IRON price',
   polygon_iron_supply: 'IRON supply',
   polygon_iron_marketcap: 'IRON marketcap',
-  polygon_titan_price: 'LITH price',
-  polygon_titan_supply: 'LITH supply',
-  polygon_titan_marketcap: 'LITH market cap',
+  polygon_titan_price: 'TITAN price',
+  polygon_titan_supply: 'TITAN supply',
+  polygon_titan_marketcap: 'TITAN market cap',
   ecr: 'Collateral ratio',
   tvl: 'Collateral value',
   tcr: 'Target collateral ratio',

@@ -27,7 +27,7 @@ const AccountTokenBalances: React.FC = () => {
       </StyledBalanceWrapper>
 
       <StyledBalanceWrapper>
-        <TokenSymbol symbol="LITH" size={54} />
+        <TokenSymbol symbol="TITAN" size={54} />
         <StyledBalance>
           <StyledValue>
             <Amount
@@ -38,7 +38,7 @@ const AccountTokenBalances: React.FC = () => {
               noUnits={true}
             />
           </StyledValue>
-          <StyledTokenName>LITH</StyledTokenName>
+          <StyledTokenName>TITAN</StyledTokenName>
         </StyledBalance>
       </StyledBalanceWrapper>
     </Balances>

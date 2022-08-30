@@ -17,7 +17,7 @@ const useCollateralRatio = () => {
       color: 'rgb(182, 80, 158)',
     },
     {
-      title: 'LITH',
+      title: 'TITAN',
       ratio: 40,
       value: 400000,
       color: 'rgb(240, 101, 10)',

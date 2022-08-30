@@ -20,18 +20,16 @@ interface ModalInfo {
   backdropClick?: boolean;
 }
 
-const modalSetter =
-  (info: ModalInfo) =>
-  (state: ModalInfo[]): ModalInfo[] => {
-    const existed = info.id && state.some((x) => x.id === info.id);
-    if (!existed) {
-      return [...state, info];
-    }
+const modalSetter = (info: ModalInfo) => (state: ModalInfo[]): ModalInfo[] => {
+  const existed = info.id && state.some((x) => x.id === info.id);
+  if (!existed) {
+    return [...state, info];
+  }
 
-    return state.map((item) => (item.id !== info.id ? item : info));
-  };
+  return state.map((item) => (item.id !== info.id ? item : info));
+};
 
-const Modals: React.FC = ({ children }: any) => {
+const Modals: React.FC = ({ children }) => {
   const [modals, setModals] = useState<ModalInfo[]>([]);
 
   const handlePresent = useCallback(
@@ -44,14 +42,14 @@ const Modals: React.FC = ({ children }: any) => {
   );
 
   const handleDismiss = useCallback((id: string) => {
-    setModals((data: any) => data.filter((t: any) => t.id !== id));
+    setModals((data) => data.filter((t) => t.id !== id));
   }, []);
 
   const backdropClick = useCallback(() => {
     if (modals.length === 0) {
       return;
     }
-    setModals((data: any) => data.slice(0, data.length - 1));
+    setModals((data) => data.slice(0, data.length - 1));
   }, [modals]);
 
   return (
@@ -63,7 +61,7 @@ const Modals: React.FC = ({ children }: any) => {
       }}
     >
       {children}
-      {modals?.map((modal: any) => (
+      {modals?.map((modal) => (
         <StyledModalWrapper key={modal.id}>
           <StyledBackdrop onClick={modal.backdropClick ? backdropClick : undefined} />
           <ModalContent>

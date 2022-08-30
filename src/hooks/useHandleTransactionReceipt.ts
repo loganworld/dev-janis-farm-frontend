@@ -32,7 +32,7 @@ const useHandleTransactionReceipt = () => {
         return response;
       } catch (err) {
         hideModal();
-        const { title, message } = getErrorMessage(err as any, summary);
+        const { title, message } = getErrorMessage(err, summary);
         addPopup({ error: { message, title } });
         throw err;
       }

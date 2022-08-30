@@ -76,7 +76,7 @@ const ChartModal: React.FC<ChartModalProps> = ({ tokenType, initMeasurement, onD
         return `1 IRON = 1 USD`;
       }
       case 'share': {
-        return `1 LITH = 60USD`;
+        return `1 TITAN = 60USD`;
       }
       default:
         return '';
@@ -90,9 +90,9 @@ const ChartModal: React.FC<ChartModalProps> = ({ tokenType, initMeasurement, onD
       if (measurement === 'polygon_iron_marketcap') return 'IRON Marketcap';
     }
     if (tokenType === 'share') {
-      if (measurement === 'polygon_titan_price') return 'LITH Price';
-      if (measurement === 'polygon_titan_supply') return 'LITH Supply';
-      if (measurement === 'polygon_titan_marketcap') return 'LITH Marketcap';
+      if (measurement === 'polygon_titan_price') return 'TITAN Price';
+      if (measurement === 'polygon_titan_supply') return 'TITAN Supply';
+      if (measurement === 'polygon_titan_marketcap') return 'TITAN Marketcap';
     }
     return 'Value';
   }, [measurement, tokenType]);

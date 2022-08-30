@@ -23,7 +23,7 @@ import IRONFINANCELogo from '../../assets/img/IRON-logo.png';
 const logosBySymbol: { [title: string]: string } = {
   USDC: USDCLogo,
   IRON: DOLLARLogo,
-  LITH: SHARELogo,
+  TITAN: SHARELogo,
   ETH: ETHLogo,
   ADA: ADALogo,
   MATIC: MATICLogo,

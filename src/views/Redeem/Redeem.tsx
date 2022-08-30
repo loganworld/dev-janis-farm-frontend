@@ -50,10 +50,9 @@ const Redeem: React.FC = () => {
   const history = useHistory();
   const query = useQuery();
 
-  const isFullCollateralized = useMemo(
-    () => info?.effectiveCollateralRatio.gte(10 ** 6),
-    [info?.effectiveCollateralRatio],
-  );
+  const isFullCollateralized = useMemo(() => info?.effectiveCollateralRatio.gte(10 ** 6), [
+    info?.effectiveCollateralRatio,
+  ]);
 
   const isExceededBalance = useMemo(() => {
     if (dollarBalance && dollarAmount) {
@@ -192,7 +191,7 @@ const Redeem: React.FC = () => {
             <FormRow>
               <div className="row-header">
                 <h6>
-                  Output LITH &middot;{' '}
+                  Output TITAN &middot;{' '}
                   <Number
                     percentage={true}
                     value={BigNumber.from(1e6).sub(info?.effectiveCollateralRatio)}
@@ -210,8 +209,8 @@ const Redeem: React.FC = () => {
                   <Number value={minOutputShareAmount} decimals={18} precision={6} />
                 </FormOutput>
                 <FormToken>
-                  <TokenSymbol size={32} symbol={'LITH'}></TokenSymbol>
-                  <span>LITH</span>
+                  <TokenSymbol size={32} symbol={'TITAN'}></TokenSymbol>
+                  <span>TITAN</span>
                 </FormToken>
               </div>
             </FormRow>

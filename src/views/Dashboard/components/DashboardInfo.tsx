@@ -14,7 +14,7 @@ import { StyledGrid, StyledGridItem } from '../Dashboard';
 import TotalValueLockChart from './TotalValueLockChart';
 import { useConfiguration } from 'src/contexts/ConfigProvider/ConfigProvider';
 
-const Tokens = ['iron', 'LITH'];
+const Tokens = ['iron', 'titan'];
 
 const DashboardInfo: React.FC = () => {
   const config = useConfiguration();
@@ -113,7 +113,7 @@ const DashboardInfo: React.FC = () => {
       </StyledGridItem>
       <StyledGridItem col={[3, 5]} row={[2, 3]}>
         <TokenInfo
-          token={'LITH'}
+          token={'TITAN'}
           price={tokensInfo?.titan.price}
           totalSupply={tokensInfo?.titan.totalSupply}
           marketCap={tokensInfo?.titan.marketCap}

@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import React, { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
 
-import Icon, { IconProps } from '../Icon';
+import Icon, { IconProps } from '../Icon'
 
 const RemoveIcon: React.FC<IconProps> = ({ color }) => {
-  const { color: themeColor } = useContext(ThemeContext);
+  const { color: themeColor } = useContext(ThemeContext)
   return (
     <Icon>
       <svg
@@ -13,11 +13,12 @@ const RemoveIcon: React.FC<IconProps> = ({ color }) => {
         width="18px"
         height="18px"
       >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M19 13H5v-2h14v2z" />
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M19 13H5v-2h14v2z"/>
       </svg>
-    </Icon>
-  );
-};
 
-export default RemoveIcon;
+    </Icon>
+  )
+}
+
+export default RemoveIcon

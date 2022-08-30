@@ -124,9 +124,9 @@ export function useClearAllTransactions(): { clearAllTransactions: () => void } 
   const { chainId } = useWeb3React();
   const dispatch = useDispatch<AppDispatch>();
   return {
-    clearAllTransactions: useCallback(
-      () => dispatch(clearAllTransactions({ chainId })),
-      [chainId, dispatch],
-    ),
+    clearAllTransactions: useCallback(() => dispatch(clearAllTransactions({ chainId })), [
+      chainId,
+      dispatch,
+    ]),
   };
 }

@@ -12,10 +12,8 @@ import useWalletConnectors from 'src/hooks/useWalletConnectors';
 import { Web3Provider } from '@ethersproject/providers';
 import { ConnectorNames } from 'src/state/application/reducer';
 import { NetworkConnector } from 'src/libs/NetworkConnector';
-import { useWallet } from 'use-wallet';
 import { isArray } from 'lodash';
 import config from 'src/config';
-import { styledAddress } from '../../../utils';
 
 const isMetaMaskConnected = () => {
   if (
@@ -40,7 +38,6 @@ const defaultConnector = new NetworkConnector({
 });
 
 const AccountButton: React.FC = () => {
-  const wallet = useWallet();
   const [onPresentAccountModal] = useModal(<AccountModal />);
   const { account, activate, library, deactivate } = useWeb3React<Web3Provider>();
   const allTransactions = useAllTransactions();
@@ -95,10 +92,6 @@ const AccountButton: React.FC = () => {
     }
   }, [account]);
 
-  const disconnect = () => {
-    wallet.reset();
-  };
-
   return (
     <StyledAccountButton>
       {account ? (
@@ -124,17 +117,11 @@ const AccountButton: React.FC = () => {
             Waiting for network
           </>
         </StyledButton>
-      ) : wallet.status != 'connected' ? (
+      ) : (
         <StyledButtonConnect onClick={() => tryConnect()}>
           <i className="fas fa-plug"></i>
           <Spacer size="sm" />
           Connect
-        </StyledButtonConnect>
-      ) : (
-        <StyledButtonConnect onClick={() => disconnect()}>
-          <i className="fas fa-plug"></i>
-          <Spacer size="sm" />
-          {styledAddress(wallet.account)}
         </StyledButtonConnect>
       )}
     </StyledAccountButton>

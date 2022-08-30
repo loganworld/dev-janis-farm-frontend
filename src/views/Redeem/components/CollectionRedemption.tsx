@@ -49,7 +49,7 @@ const CollectionRedemption: React.FC = () => {
             <UnclaimedValue disabled={!hasUnclaimedShare}>
               <Number value={unclaimedShare} decimals={6} precision={6} />
             </UnclaimedValue>
-            <UnclaimedTitle>LITH</UnclaimedTitle>
+            <UnclaimedTitle>TITAN</UnclaimedTitle>
           </UnclaimedItem>
         </UnclaimedContainer>
       </CardBody>

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useCallback } from 'react';
 import { FarmPoolData, PartnerFarmPoolData } from 'src/api/backend-api';
 import Loading from 'src/components/Loading';
@@ -14,8 +14,6 @@ import StakeLPComponent from './StakeLPComponent';
 import UnstakeLPComponent from './UnstakeLPComponent';
 import Spacer from 'src/components/Spacer';
 import { BigNumber } from '@ethersproject/bignumber';
-import { toBigNum } from 'src/utils';
-import { useBlockchainContext } from 'src/contexts/blockchainProvider';
 
 export type FarmItemProps = {
   index: number;
@@ -26,14 +24,6 @@ export type FarmItemProps = {
   visible: boolean;
   onlyDeposit?: boolean;
   updatePoolDeposit?: (index: number, deposit: boolean) => void;
-};
-
-type FarmItemStatus = {
-  balance: any;
-  deposited: any;
-  tvl: string | null;
-  apr: string | null;
-  apy: string | null;
 };
 
 const FarmItem: React.FC<FarmItemProps> = ({
@@ -63,7 +53,6 @@ const FarmItem: React.FC<FarmItemProps> = ({
     market,
     marketSymbol,
     farmUrl,
-    wantToken,
   } = poolConfig;
 
   const blockNumber = useBlockNumber();
@@ -143,35 +132,6 @@ const FarmItem: React.FC<FarmItemProps> = ({
     updatePoolDeposit && updatePoolDeposit(index, isShow);
   }, [isShow, onlyDeposit, index, updatePoolDeposit]);
 
-  const myDeposit = (index: any) => {
-    console.log(index, typeof index);
-  };
-
-  // new states
-  const [state, { dispatch, checkERC20Balance }] = useBlockchainContext();
-
-  const [status, setStatus] = useState<FarmItemStatus>({
-    balance: toBigNum(100),
-    deposited: null,
-    tvl: null,
-    apr: null,
-    apy: null,
-  });
-
-  useEffect(() => {
-    (async () => {
-      if (state.signer) {
-        try {
-          const balance = await checkERC20Balance(wantToken);
-          setStatus({ ...status, balance });
-        } catch (err: any) {
-          console.log('farms/farmItem', err);
-          setStatus({ ...status, balance: toBigNum(0) });
-        }
-      }
-    })();
-  }, [state.signer]);
-
   return (
     isShow && (
       <StyledContainer
@@ -226,8 +186,8 @@ const FarmItem: React.FC<FarmItemProps> = ({
           </StyledHeaderCell>
           <StyledHeaderCell paddingLeft={14} hiddenXs={true}>
             <StyledHeaderDataValue>
-              {status.tvl ? (
-                '$' + numberWithCommas(status.tvl)
+              {tvl ? (
+                '$' + numberWithCommas(tvl)
               ) : (
                 <Loading size={'16px'} color={theme.color.white} />
               )}
@@ -238,8 +198,8 @@ const FarmItem: React.FC<FarmItemProps> = ({
               <div className="line">
                 <span className="field">APR</span>
                 <div className="value">
-                  {status.apr ? (
-                    numberWithCommas(status.apr) + '%'
+                  {apr ? (
+                    numberWithCommas(apr) + '%'
                   ) : farmUrl ? (
                     '-'
                   ) : (
@@ -250,8 +210,8 @@ const FarmItem: React.FC<FarmItemProps> = ({
               <div className="line">
                 <span className="field">APY</span>
                 <div className="value">
-                  {status.apy ? (
-                    numberWithCommas(status.apy) + '%'
+                  {apy ? (
+                    numberWithCommas(apy) + '%'
                   ) : farmUrl ? (
                     '-'
                   ) : (
@@ -277,8 +237,8 @@ const FarmItem: React.FC<FarmItemProps> = ({
           <StyledSubheaderCell>
             TVL:
             <StyledHeaderDataValue>
-              {status.tvl ? (
-                '$' + numberWithCommas(status.tvl)
+              {tvl ? (
+                '$' + numberWithCommas(tvl)
               ) : (
                 <Loading size={'16px'} color={theme.color.white} />
               )}
@@ -287,8 +247,8 @@ const FarmItem: React.FC<FarmItemProps> = ({
           <StyledSubheaderCell>
             APR:
             <StyledHeaderDataValue>
-              {status.apr ? (
-                numberWithCommas(status.apr) + '%'
+              {apr ? (
+                numberWithCommas(apr) + '%'
               ) : farmUrl ? (
                 '-'
               ) : (
@@ -298,19 +258,13 @@ const FarmItem: React.FC<FarmItemProps> = ({
           </StyledSubheaderCell>
           <StyledSubheaderCell>
             Deposited:
-            <StyledHeaderDataValue highlight={true}>
-              {status.deposited ? (
-                '$' + numberWithCommas(status.deposited)
-              ) : (
-                <Loading size={'16px'} color={theme.color.white} />
-              )}
-            </StyledHeaderDataValue>
+            <StyledHeaderDataValue highlight={true}>$0</StyledHeaderDataValue>
           </StyledSubheaderCell>
           <StyledSubheaderCell>
             APY:
             <StyledHeaderDataValue>
-              {status.apy ? (
-                numberWithCommas(status.apy) + '%'
+              {apy ? (
+                numberWithCommas(apy) + '%'
               ) : farmUrl ? (
                 '-'
               ) : (
@@ -336,15 +290,10 @@ const FarmItem: React.FC<FarmItemProps> = ({
               )}
               <StyledControl>
                 <StyledControlItem className="balance">
-                  <StakeLPComponent
-                    index={index}
-                    setDeposit={myDeposit}
-                    poolConfig={poolConfig}
-                    balance={status.balance}
-                  />
+                  <StakeLPComponent poolConfig={poolConfig} />
                 </StyledControlItem>
                 <StyledControlItem className="deposited">
-                  <UnstakeLPComponent poolConfig={poolConfig} balance={status.deposited} />
+                  <UnstakeLPComponent poolConfig={poolConfig} />
                 </StyledControlItem>
               </StyledControl>
             </StyledInnerContent>

@@ -26,7 +26,7 @@ const logosBySymbol: { [title: string]: string } = {
   IRON: DOLLARLogo,
   ADA: ADALogo,
   DOT: DOTLogo,
-  LITH: SHARELogo,
+  TITAN: SHARELogo,
   MATIC: MATICLogo,
   ETH: ETHLogo,
   BTCB: BTCBLogo,
@@ -42,11 +42,6 @@ const logosBySymbol: { [title: string]: string } = {
   QUICKSWAP: QUICKSWAPLogo,
   FIREBIRD: FIREBIRDLogo,
   IRONFINANCE: IRONFINANCELogo,
-  TEST0: DBTCLogo,
-  TEST1: DBNBLogo,
-  TEST2: DETHLogo,
-  TEST3: DADALogo,
-  TEST4: DDOTLogo,
 };
 
 type TokenSymbolProps = {

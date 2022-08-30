@@ -68,7 +68,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
               <TxModalOutputAmount>
                 <Number value={minOutputShareAmount} decimals={18} precision={6} />
               </TxModalOutputAmount>
-              <TxModalTokenName>LITH Tokens</TxModalTokenName>
+              <TxModalTokenName>TITAN Tokens</TxModalTokenName>
             </StyledReceiveToken>
           )}
         </StyledReceiveTokens>

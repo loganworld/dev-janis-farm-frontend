@@ -89,7 +89,7 @@ const PieChart: React.FC<PieChartProps> = ({ data }) => {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               label: function (context: any) {
                 return `${context.label}: ${
-                  context.label !== 'LITH' ? '$' : '~$'
+                  context.label !== 'TITAN' ? '$' : '~$'
                 }${numberWithCommas(context.parsed.toString())}`;
               },
             },
